@@ -34,7 +34,7 @@ public class Qsort {
 		sort(s, start, tempe-1);
 		sort(s, tempe+1, end);
 	}
-	
+	// "What?"
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Integer [] a = {32,543,645,74,5674,56,2,523,42,324,4365,34,7645,754,66,234,1};
