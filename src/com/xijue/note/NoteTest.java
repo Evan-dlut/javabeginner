@@ -4,7 +4,6 @@ import com.bitory.print.MyPrint;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,15 +11,15 @@ import java.util.List;
  * Created by xijueyp on 14-6-23.
  */
 public class NoteTest {
-    @Tsst(id=10)
+    @Test(id=10)
     public void a(){}
 
-    @Tsst(id=20, name = "b")
+    @Test(id=20, name = "b")
     public void b(){ }
 
     public static void track(List<Integer> a, Class<?> c){
         for(Method m:c.getDeclaredMethods()){
-            Tsst t = m.getAnnotation(Tsst.class);
+            Test t = m.getAnnotation(Test.class);
             if (t != null){
                 MyPrint.printlnObject(t.id()+":"+t.name());
                 a.remove((Integer)t.id());
