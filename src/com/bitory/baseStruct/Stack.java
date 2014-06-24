@@ -5,7 +5,6 @@ import com.bitory.print.MyPrint;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Objects;
 
 import static java.lang.System.exit;
 
@@ -14,8 +13,8 @@ import static java.lang.System.exit;
  *
  * 函数的含义同官方文档
  */
-public class Stack {
-    private ArrayList data;
+public class Stack<T> {
+    private ArrayList<T> data;
 
     public Stack(){
         data = new ArrayList();
@@ -25,36 +24,37 @@ public class Stack {
         return data.size() == 0;
     }
 
-    public Integer peek() {
-        Integer index = null;
-        try {
-            index = (Integer) data.get(data.size() - 1);
-        } catch (EmptyStackException e) {
-            e.printStackTrace();
-        }
+    public T peek() {
+        T index = null;
+        if (data.size() == 0)
+            throw new EmptyStackException();
+        else
+            data.remove(data.size() - 1);
         return index;
     }
 
-    public Integer pop(){
-        Integer index = null;
+    @Deprecated
+    public T pop(){
+        T index = null;
         try{
-            index = new Stack().peek();
+            index = (T) new Stack().peek();
         }catch(EmptyStackException e){
             // 返回的异常名字为什么没有我写的这个异常
-            e.printStackTrace();
+            MyPrint.printlnObject("as");
+            // e.printStackTrace();
         }
         data.remove(data.size() - 1);
         return index;
     }
 
-    public Integer push(Integer item){
+    public T push(T item){
         data.add(item);
 
 
         return item;
     }
 
-    public int search(Objects o){
+    public int search(Object o){
         int local = 1;
         for (Iterator i = data.iterator();i.hasNext();){
             if (i.next().equals(o))
@@ -67,6 +67,7 @@ public class Stack {
     public static void main(String arv[]){
         Stack s = new Stack();
         s.peek();
+
     }
 
 }
