@@ -77,7 +77,6 @@ public class Practice21_15 implements Runnable{
         e.execute(new Practice21_15(r));
         e.execute(new Practice21_15(r));
         e.execute(new Practice21_15(r));
-//        e.shutdown();
-//        MyPrint.printlnObject("Finish");
+        e.shutdown();
     }
 }
