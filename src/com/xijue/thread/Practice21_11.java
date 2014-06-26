@@ -19,7 +19,7 @@ class Resouce{
         value2 = 2;
     }
 
-    public void changeValues() throws InterruptedException {
+    public void changeValues() {
         // synchronized 的多种用法？
         // 联合成静态的
         value1+=value2;
@@ -57,14 +57,11 @@ public class Practice21_11 implements Runnable{
         exec.execute(new Practice21_11(r));
         exec.execute(new Practice21_11(r));
         exec.execute(new Practice21_11(r));
+        exec.shutdown();
     }
 
     @Override
     public void run() {
-        try {
             r.changeValues();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }

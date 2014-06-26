@@ -28,17 +28,18 @@ public class Practice21_15 implements Runnable{
     public void a() throws InterruptedException {
         synchronized (p){
             MyPrint.printlnObject(p.i+"a begin");
-            TimeUnit.SECONDS.sleep(2);
-            MyPrint.printlnObject("a end");
+            TimeUnit.SECONDS.sleep(1);
+            MyPrint.printlnObject(" a end");
             p.i++;
+            // while(true);
         }
     }
 
     public void b() throws InterruptedException {
         synchronized (p){
             MyPrint.printlnObject(p.i+"b begin");
-            TimeUnit.SECONDS.sleep(2);
-            MyPrint.printlnObject("b end");
+            TimeUnit.SECONDS.sleep(1);
+            MyPrint.printlnObject(" b end");
             p.i++;
         }
     }
@@ -46,18 +47,16 @@ public class Practice21_15 implements Runnable{
     public void c() throws InterruptedException {
         synchronized (p){
             MyPrint.printlnObject(p.i+"c begin");
-            TimeUnit.SECONDS.sleep(2);
-            MyPrint.printlnObject("c end");
+            TimeUnit.SECONDS.sleep(1);
+            MyPrint.printlnObject(" c end");
             p.i++;
         }
     }
-
 
     @Override
     public void run() {
         try {
             switch (count++){
-
                 case 1:
                     a();break;
                 case 2:
@@ -69,14 +68,17 @@ public class Practice21_15 implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        MyPrint.printlnObject("finish run");
     }
 
-    public static void main(String arv[]){
+    public static void main(String arv[]) throws InterruptedException {
         Resource r = new Resource();
         ExecutorService e = Executors.newCachedThreadPool();
+        MyPrint.printlnObject(e);
         e.execute(new Practice21_15(r));
         e.execute(new Practice21_15(r));
         e.execute(new Practice21_15(r));
         e.shutdown();
+
     }
 }
